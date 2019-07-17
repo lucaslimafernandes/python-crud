@@ -41,6 +41,10 @@ def mostrarDados():
     for k, v in resultChaves.items():
         print(k, end='  ')
     print()
+    for item in result:
+        for ka, va in item.items():
+            print(va, end=' ')
+        print()
 
 def selecioneId(id):
     cursor = connection.cursor()
