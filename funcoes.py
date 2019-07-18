@@ -65,7 +65,7 @@ def inserirDB(nome,email,senha):
     sql = f"INSERT INTO pessoas (nome, email, senha) VALUES ('{nome}', '{email}', '{senha}')"
     cursor.execute(sql)
     connection.commit()
-    connection.close()
+
 
 
 def deletarDados(id,psw):
@@ -74,10 +74,11 @@ def deletarDados(id,psw):
     cursor.execute(f"SELECT * FROM pessoas WHERE id = {id}")
     result = cursor.fetchone()
     print(result['senha'])
-    if psw != result["senha"]:
+    if psw == int(result["senha"]):
         print(result)
-#    else:
-#        print('Senha inválida')
+        cursor.execute(f"DELETE FROM pessoas WHERE id = {id}")
+    else:
+        print('Senha inválida')
 
 
 
